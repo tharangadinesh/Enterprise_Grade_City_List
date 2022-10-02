@@ -31,6 +31,19 @@ public class CityServiceImpl implements CityService {
 	private CityDao cityDao;
 
 	@Override
+	public ResponseEntity<CityDTO> add(CityDTO dto) throws Exception {
+
+		City domain =  new City();
+
+		CityMapper.getInstance().dtoToDomain(dto, domain);
+
+		cityDao.save(domain);
+
+		return ResponseEntity.ok(CityMapper.getInstance().domainToDto(domain));
+
+	}
+
+	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public ResponseEntity<CityDTO> save(CityDTO dto) {
 		try {

@@ -20,5 +20,7 @@ public interface CityService {
 
 	ResponseEntity<Map<String, Object>> findAll(Pageable pageable, String query);
 
+	ResponseEntity<CityDTO> add(CityDTO dto) throws Exception;
+
 
 }

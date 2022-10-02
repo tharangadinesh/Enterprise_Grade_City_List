@@ -1,0 +1,48 @@
+<div class="col-md-12">
+    <div class="card card-container">
+            <form
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  [(ngModel)]="form.name"
+                  required
+                  minlength="3"
+                  maxlength="20"
+                  #name="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && name.errors }"
+                />
+                <div class="invalid-feedback" *ngIf="name.errors && f.submitted">
+                  <div *ngIf="name.errors['required']">Name is required</div>
+                  <div *ngIf="name.errors['minlength']">
+                    Username must be at least 3 characters
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="photo">Photo</label>
+                <textarea
+                  class="form-control"
+                  name="photo"
+                  [(ngModel)]="form.photo"
+                  required
+                  #photo="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && photo.errors }"
+                ></textarea>
+                <div class="invalid-feedback" *ngIf="photo.errors && f.submitted">
+                  <div *ngIf="photo.errors['required']">Photo is required</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary btn-block">Save</button>
+              </div>
+        </form>
+    </div>
+</div>

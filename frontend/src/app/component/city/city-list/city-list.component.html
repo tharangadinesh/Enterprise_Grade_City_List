@@ -23,7 +23,7 @@
         </div>
            
       </div>
-      <div class="col-md-6"> 
+      <div class="col-md-3"> 
         <label for="pagePer"> Items per Page</label>
         <select id="pagePer" class="custom-select mb-3" (change)="handlePageSizeChange($event)">
           <option *ngFor="let size of pageSizes" [value]="size">
@@ -31,11 +31,14 @@
           </option>
         </select>
       </div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-primary btn-block pull-right city-add" (click)="btnClick();"><i class="fa fa-plus"></i> Add</button>    
+      </div>
   </div>
 
   <div class="row">
     <div class="wrapper">
-      <div class="col-md-12"         *ngFor="let city of cities | paginate : {
+      <div class="col-md-12" *ngFor="let city of cities | paginate : {
         itemsPerPage: pageSize,
         currentPage: page,
         totalItems: count

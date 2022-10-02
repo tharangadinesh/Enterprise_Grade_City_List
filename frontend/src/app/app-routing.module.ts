@@ -5,10 +5,12 @@ import { CityDetailsComponent } from './component/city/city-details/city-details
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { HomeComponent } from './component/home/home.component';
+import { CityAddComponent } from './component/city/city-add/city-add.component';
 
 const routes: Routes = [
   { path : 'cities' , component: CityListComponent},
   { path : 'cities/:id', component: CityDetailsComponent },
+  { path : 'city/add', component: CityAddComponent},
   { path : 'login', component: LoginComponent },
   { path : 'register', component: RegisterComponent },
   { path : 'home', component: HomeComponent}

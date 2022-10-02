@@ -3,6 +3,7 @@ import { City } from 'app/model/city/city.model';
 import { CityService } from 'app/service/city/city.service';
 import { StorageService } from 'app/service/storage/storage.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-city-list',
@@ -24,7 +25,12 @@ export class CityListComponent implements OnInit {
   pageSize = 3;
   pageSizes = [3, 6, 9];
 
-  constructor(private cityService: CityService, private storageService: StorageService, private toastr: ToastrService) { }
+  constructor(
+    private cityService: CityService, 
+    private storageService: StorageService, 
+    private toastr: ToastrService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.retrieveCities();
@@ -111,6 +117,10 @@ export class CityListComponent implements OnInit {
       });
 
   }
+
+  btnClick(): void {
+      this.router.navigateByUrl('/city/add');
+  };
 
   openSuccess(message : string){
 

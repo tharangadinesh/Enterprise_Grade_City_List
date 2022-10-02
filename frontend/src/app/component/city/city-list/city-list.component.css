@@ -10,6 +10,10 @@
   margin-top: 15px;
 }
 
+.city-add{
+  margin-top: 31px;
+}
+
 @media only screen and (min-width: 400px) {
   .wrapper{
   grid-template-columns: auto auto;

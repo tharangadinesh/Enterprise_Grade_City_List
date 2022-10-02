@@ -1,0 +1,66 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentCity.id">
+      <h4>City</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentCity.name }}
+      </div>
+      <div>
+        <img [src]="currentCity.photo" width="100" height="100"> 
+      </div>
+  
+      <a
+        class="badge badge-warning"
+        routerLink="/cities/{{ currentCity.id }}"
+      >
+        Edit
+      </a>
+    </div>
+  
+    <div *ngIf="!currentCity">
+      <br />
+      <p>Please click on a City...</p>
+    </div>
+  </div>
+  
+  <ng-template #editable>
+    <div *ngIf="currentCity.id" class="edit-form">
+      <h4>City</h4>
+      <form>
+        <input type="hidden" id="id" name="id" [(ngModel)]="currentCity.id"/>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentCity.name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="photo">Photo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="photo"
+            [(ngModel)]="currentCity.photo"
+            name="photo"
+          />
+        </div>
+      </form>
+
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateCity()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentCity.id">
+      <br />
+      <p>Cannot access this City...</p>
+    </div>
+  </ng-template>
